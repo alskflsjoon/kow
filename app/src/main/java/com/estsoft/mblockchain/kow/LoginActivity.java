@@ -79,6 +79,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         signInButton.setScopes(gso.getScopeArray());
         // [END customize_button]
 
+
     }
 
 
@@ -110,6 +111,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
+
+    //onActivityResult
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
