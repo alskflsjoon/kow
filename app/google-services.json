@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "251816429365",
+    "project_id": "firebase-kowapp"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:251816429365:android:b8a094096ea13cba",
+        "android_client_info": {
+          "package_name": "com.estsoft.mblockchain.kow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "251816429365-adb70254v8ph028ldh43b2l0jhvisfvv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.estsoft.mblockchain.kow",
+            "certificate_hash": "9D7BB5FB5B9A19411E7B08AE33653D462558E7BC"
+          }
+        },
+        {
+          "client_id": "251816429365-k41ntf0h4vfsvuft6g1b9d2mrtucij8m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBedmnsIgeyEW6F6wM3-ceP2TPLLkKkOis"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
