@@ -1,5 +1,6 @@
 package com.estsoft.mblockchain.kow.fragments;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.estsoft.mblockchain.kow.R;
+import com.estsoft.mblockchain.kow.adapters.PreferencesUtil;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * Created by joeylee on 2016-11-16.
@@ -29,11 +33,17 @@ public class MyPageFragment extends Fragment {
 
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_mypage, container, false);
 
+        String acct = PreferencesUtil.getPreferences(getContext(),"acct");
+
+
         // Setup list
         backgroundImg = (ImageView) rootView.findViewById(R.id.header_cover_image);
         profileView = (ImageView) rootView.findViewById(R.id.user_profile_photo);
         TextView nameView = (TextView) rootView.findViewById(R.id.prof_name);
         TextView profMessage = (TextView)rootView.findViewById(R.id.prof_message);
+
+        nameView.setText(acct);
+
 
         return rootView;
 
