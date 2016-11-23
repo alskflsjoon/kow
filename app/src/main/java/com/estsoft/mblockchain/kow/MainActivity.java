@@ -28,7 +28,11 @@ import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 
 public class MainActivity extends AppCompatActivity {
+<<<<<<< HEAD
 
+=======
+/* 병합 테스트 */
+>>>>>>> 818db5ed1c33a1b3c9ad0c36dc99db30941821f7
     private FloatingActionButton fab;
 
 
@@ -110,10 +114,11 @@ public class MainActivity extends AppCompatActivity {
                 .attachTo(rightTopButton)
                 .build();
 
+        rlIcon1.setOnClickListener( v ->    {
+            Intent inputActivity = new Intent(getApplicationContext(), InputTextActivity.class);
+            startActivity(inputActivity);
+        } );
 
-        rlIcon1.setOnClickListener( v ->
-            Toast.makeText(this,"text",Toast.LENGTH_LONG).show()
-        );
         rlIcon2.setOnClickListener( v ->
             Toast.makeText(this,"picture",Toast.LENGTH_LONG).show()
         );
