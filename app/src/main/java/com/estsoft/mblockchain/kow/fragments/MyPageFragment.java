@@ -1,9 +1,11 @@
 package com.estsoft.mblockchain.kow.fragments;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +14,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.estsoft.mblockchain.kow.LoginActivity;
+import com.estsoft.mblockchain.kow.MainActivity;
 import com.estsoft.mblockchain.kow.R;
+import com.estsoft.mblockchain.kow.adapters.GoogleLoginAdapter;
 import com.estsoft.mblockchain.kow.adapters.PreferencesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
 
@@ -26,10 +31,10 @@ public class MyPageFragment extends Fragment {
     ImageView backgroundImg;    // cover image
     ImageView profileView;  // profile image
 
+    GoogleLoginAdapter loginAdapter;
 
     public static MyPageFragment newInstance() { return new MyPageFragment(); }
 
-    private GoogleApiClient mGoogleApiClient;
 
     @Nullable
     @Override
@@ -39,6 +44,9 @@ public class MyPageFragment extends Fragment {
 
         String acct = PreferencesUtil.getPreferences(getContext(),"acct");
 
+        loginAdapter = new GoogleLoginAdapter(getActivity(), getContext());
+        loginAdapter.init();
+
 
         // Setup list
         backgroundImg = (ImageView) rootView.findViewById(R.id.header_cover_image);
@@ -46,7 +54,12 @@ public class MyPageFragment extends Fragment {
         Button signOutButton = (Button) rootView.findViewById(R.id.sign_out_button);
         signOutButton.setOnClickListener( v -> {
 
-            Toast.makeText(getContext(),"sign out",Toast.LENGTH_LONG).show();
+//            Toast.makeText(getContext(),"sign out",Toast.LENGTH_LONG).show();
+            loginAdapter.signOut();
+            Intent i = new Intent(getContext(), LoginActivity.class);
+            startActivity(i);
+            getActivity().finish();
+
 
         });
         TextView nameView = (TextView) rootView.findViewById(R.id.prof_name);

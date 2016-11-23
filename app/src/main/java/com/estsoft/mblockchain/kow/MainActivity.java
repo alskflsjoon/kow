@@ -21,14 +21,16 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.estsoft.mblockchain.kow.adapters.GoogleLoginAdapter;
 import com.estsoft.mblockchain.kow.adapters.MainPagerAdapter;
 
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 
 public class MainActivity extends AppCompatActivity {
-/* 영진 브랜치 커밋 테스트 666 */
+
     private FloatingActionButton fab;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
