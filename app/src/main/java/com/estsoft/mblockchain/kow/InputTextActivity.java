@@ -4,11 +4,12 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.estsoft.mblockchain.kow.thread.HttpConnectionThread;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -46,6 +47,7 @@ public class InputTextActivity extends AppCompatActivity {
             generateTextFile(input);
 
             new HttpConnectionThread(getApplicationContext()).execute(schInsertURL,  generateConnData(input));
+            finish();       // Back to MainActivity
         });
 
 
@@ -94,15 +96,13 @@ public class InputTextActivity extends AppCompatActivity {
 
     private void setFileNum() {
 
-        // Get user's file list in /data/data/com.estsoft.mblockchain.kow/files/...
+        // Get user's file list in /data/data/package name/files/...
+
         String dirPath = getFilesDir().getPath();
         File file = new File(dirPath);
         Log.e("listFiles.length",file.listFiles().length+"");
 
-
         // If received file is bigger than 1, print out the file name.
-        // 파일이 1개 이상이면 파일 이름 출력
-
         File[] list = file.listFiles();
 
         for (File f : list) {
