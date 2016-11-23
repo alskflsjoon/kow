@@ -19,35 +19,17 @@ import java.net.URL;
 import java.net.URLConnection;
 
 /**
- * Created by estsoft on 2016-11-23.
+ * Added class for FCM Push
+ *
+ * "FirebaseMessagingService" class for <service> of manifest
+ *
+ * This class is used to make PUSH-ALARM to user.
+ * Message written through API is include in "message" and sended.
  */
 
 public class FirebaseMessagingService extends com.google.firebase.messaging.FirebaseMessagingService {
 
     private static final String TAG = "★★★FirebaseMsgService";
-
-    //★★★★★★★★★★★★★★★★★★★★★★★★★★★★
-
-    // FCM 수신시 진동 ON / OFF 설정하는 변수
-    // 디폴트는 on 이다.
-    String vibONOFF = "on";
-
-    // 메인액티비티에서 보내는 intent 들어온다.
-    @Override
-    protected Intent zzz(Intent intent) {
-
-        if ( intent.getStringExtra("vibONOFF") != null ) {
-
-            vibONOFF = intent.getStringExtra("vibONOFF");
-
-        }
-
-        System.out.println("★★★★★★★★★★★★★★★★★★★★zzae : " + intent.getStringExtra("vibONOFF"));
-        System.out.println("★★★★★★★★★★★★★★★★★★★★vibONOFF : " + vibONOFF);
-
-        return super.zzz(intent);
-    }
-    //★★★★★★★★★★★★★★★★★★★★★★★★★★★★
 
 
     // START receive_message
@@ -126,11 +108,11 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
                         .setSummaryText(message))
                 .setContentIntent(pendingIntent);
         //vibONOFF 값에 따라 FCM 수신시 진동 ON/OFF 결정
-        if (vibONOFF.equals("off"))
+        /*if (vibONOFF.equals("off"))
         {
             // 메세지 수신시 진동 ON/OFF 설정
             notificationBuilder.setVibrate(new long[] {0}); //진동 OFF 설정
-        }
+        }*/
 
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
