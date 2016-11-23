@@ -108,7 +108,6 @@ public class MainActivity extends AppCompatActivity {
                 .attachTo(rightTopButton)
                 .build();
 
-
         rlIcon1.setOnClickListener( v ->
             Toast.makeText(this,"text",Toast.LENGTH_LONG).show()
         );
