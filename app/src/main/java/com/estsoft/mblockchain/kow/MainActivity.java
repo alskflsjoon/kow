@@ -30,7 +30,7 @@ import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 
 public class MainActivity extends AppCompatActivity {
-/* 병합 테스트 */
+
     private FloatingActionButton fab;
 
 
@@ -44,12 +44,12 @@ public class MainActivity extends AppCompatActivity {
         setupFab();
 
         /* Added code for FCM Push : 2016-11-23 by 최영진*/
-        /** 에러발생 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
+
         // receive FCM Push by topic
         FirebaseMessaging.getInstance().subscribeToTopic("news");
         // receive Token by each user
         FirebaseInstanceId.getInstance().getToken(); // 이 함수가 불리는 시점에서 DB에 토큰이 저장됨
-        */
+
 
     }
 
@@ -124,9 +124,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(inputActivity);
         } );
 
-        rlIcon1.setOnClickListener( v ->
-            Toast.makeText(this,"text",Toast.LENGTH_LONG).show()
-        );
         rlIcon2.setOnClickListener( v ->
             Toast.makeText(this,"picture",Toast.LENGTH_LONG).show()
         );
