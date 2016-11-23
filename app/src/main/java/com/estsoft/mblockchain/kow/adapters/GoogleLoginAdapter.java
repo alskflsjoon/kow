@@ -35,6 +35,7 @@ public class GoogleLoginAdapter implements GoogleApiClient.OnConnectionFailedLis
     private ProgressDialog mProgressDialog;
     private Context mContext;
     private FragmentActivity mActivity;
+    PhpInsert task_insert;
 
 
     public static GoogleLoginAdapter newInstance(FragmentActivity activity, Context context) {
@@ -185,6 +186,14 @@ public class GoogleLoginAdapter implements GoogleApiClient.OnConnectionFailedLis
 
     public Intent onActivityResult(Intent data) {
         GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+
+        String email = result.getSignInAccount().getEmail();
+        String name = result.getSignInAccount().getDisplayName();
+        String id = result.getSignInAccount().getId();
+
+
+        task_insert = new PhpInsert();
+        task_insert.execute("http://192.168.22.72/userLogin.php",email,name, id);
 
         return  handleSignInResult(result);
     }
