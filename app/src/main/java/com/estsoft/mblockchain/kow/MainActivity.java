@@ -28,11 +28,6 @@ import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 
 public class MainActivity extends AppCompatActivity {
-<<<<<<< HEAD
-
-=======
-/* 병합 테스트 */
->>>>>>> 818db5ed1c33a1b3c9ad0c36dc99db30941821f7
     private FloatingActionButton fab;
 
 
