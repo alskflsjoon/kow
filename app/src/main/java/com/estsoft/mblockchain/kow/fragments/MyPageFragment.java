@@ -14,8 +14,8 @@ import android.widget.Toast;
 
 import com.estsoft.mblockchain.kow.R;
 import com.estsoft.mblockchain.kow.adapters.PreferencesUtil;
+import com.google.android.gms.common.api.GoogleApiClient;
 
-import static android.content.Context.MODE_PRIVATE;
 
 /**
  * Created by joeylee on 2016-11-16.
@@ -29,6 +29,7 @@ public class MyPageFragment extends Fragment {
 
     public static MyPageFragment newInstance() { return new MyPageFragment(); }
 
+    private GoogleApiClient mGoogleApiClient;
 
     @Nullable
     @Override
@@ -57,5 +58,7 @@ public class MyPageFragment extends Fragment {
         return rootView;
 
     }
+
+
 }
 
