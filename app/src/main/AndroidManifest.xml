@@ -34,6 +34,8 @@
         </service>
 
         <activity android:name=".FCMTestActivity"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".InputTextActivity"></activity>
     </application>
 
 </manifest>

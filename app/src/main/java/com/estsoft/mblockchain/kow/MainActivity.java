@@ -21,6 +21,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.estsoft.mblockchain.kow.adapters.GoogleLoginAdapter;
 import com.estsoft.mblockchain.kow.adapters.MainPagerAdapter;
 
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -29,8 +30,9 @@ import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 
 public class MainActivity extends AppCompatActivity {
-
+/* 병합 테스트 */
     private FloatingActionButton fab;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,6 +119,10 @@ public class MainActivity extends AppCompatActivity {
                 .attachTo(rightTopButton)
                 .build();
 
+        rlIcon1.setOnClickListener( v ->    {
+            Intent inputActivity = new Intent(getApplicationContext(), InputTextActivity.class);
+            startActivity(inputActivity);
+        } );
 
         rlIcon1.setOnClickListener( v ->
             Toast.makeText(this,"text",Toast.LENGTH_LONG).show()
