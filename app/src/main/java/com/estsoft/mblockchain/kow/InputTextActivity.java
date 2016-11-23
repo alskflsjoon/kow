@@ -18,6 +18,9 @@ import java.util.Date;
 /**
  * Created by yeonji on 2016-11-22.
  * This Activity is received user's text input.
+ *
+ * If the user fill in this document form,
+ * we can generate text file(.txt) and save text into DB.
  */
 
 public class InputTextActivity extends AppCompatActivity {
@@ -40,37 +43,46 @@ public class InputTextActivity extends AppCompatActivity {
 
         btn_enroll.setOnClickListener( v -> {
             String input = edt_input.getText().toString();
-            Log.e("input", input);
-
             generateTextFile(input);
 
-            /*************************************************************************************/
-            String userID = "yjhwo";        // <<< user db와 연동하기!
-            /*************************************************************************************/
-
-            // -- 보낼 데이터
-            String data = "id="+userID+"&text="+input;
-            new HttpConnectionThread(getApplicationContext()).execute(schInsertURL,  data);
-
+            new HttpConnectionThread(getApplicationContext()).execute(schInsertURL,  generateConnData(input));
         });
 
 
+    }
+
+    private String getUserID(){
+
+        /*************************************************************************************/
+        String userID = "yjhwo";        // <<< user db와 연동하기!
+        /*************************************************************************************/
+        return userID;
+    }
+
+    private String generateConnData(String input){
+        // Set up data for send to ConnectionThread
+        String userID = getUserID();
+        return "id="+userID+"&text="+input;
+    }
+
+    private String generateFileName(){
+        // Generate File Name
+        // rule : user id + generated num
+        String userID = getUserID();
+
+        String fileName = userID + generatedNum+".txt";
+        Log.e("To generate fileName", fileName);
+
+        return fileName;
     }
 
     private void generateTextFile(String input) {
 
         setFileNum();          // Generate File Number
 
-        // Generate File Name
-        // rule : user id + generated num
-        String userID = "yjhwo";
-
-        String fileName = userID + generatedNum+".txt";
-        Log.e("To generate fileName", fileName);
-
         try{
-            // 파일 생성
-            FileOutputStream fos = openFileOutput(fileName, Context.MODE_WORLD_READABLE);
+            // Genrate txt file
+            FileOutputStream fos = openFileOutput(generateFileName(), Context.MODE_WORLD_READABLE);
             fos.write(input.getBytes());            // <<<<<여기 수정
             fos.close();
 
@@ -82,21 +94,22 @@ public class InputTextActivity extends AppCompatActivity {
 
     private void setFileNum() {
 
-        // 파일들 읽어와서 없는 번호부터 생성해줌
+        // Get user's file list in /data/data/com.estsoft.mblockchain.kow/files/...
         String dirPath = getFilesDir().getPath();
         File file = new File(dirPath);
-        Log.e("dirPath", dirPath);
-
-        // 파일이 1개 이상이면 파일 이름 출력
         Log.e("listFiles.length",file.listFiles().length+"");
 
-        File[] list = file.listFiles();         //폴더가 가진 파일객체를 리스트로 받는다.
+
+        // If received file is bigger than 1, print out the file name.
+        // 파일이 1개 이상이면 파일 이름 출력
+
+        File[] list = file.listFiles();
 
         for (File f : list) {
             if( f.isFile() ) {                  // only file
                 String str = f.getName();
 
-                if( str.contains(".txt") ){     //확장자명 .txt인 파일만 확인
+                if( str.contains(".txt") ){     // only '.txt' file
                     generatedNum++;
                 }
             }

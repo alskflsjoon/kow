@@ -109,9 +109,10 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
 
-        rlIcon1.setOnClickListener( v ->
-            Toast.makeText(this,"text",Toast.LENGTH_LONG).show()
-        );
+        rlIcon1.setOnClickListener( v ->    {
+            Intent inputActivity = new Intent(getApplicationContext(), InputTextActivity.class);
+            startActivity(inputActivity);
+        } );
         rlIcon2.setOnClickListener( v ->
             Toast.makeText(this,"picture",Toast.LENGTH_LONG).show()
         );
