@@ -1,4 +1,4 @@
-package com.estsoft.mblockchain.kow;
+package com.estsoft.mblockchain.kow.thread;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -14,7 +14,8 @@ import java.net.URL;
 /**
  * Created by yeonji on 2016-11-21.
  * HttpConnectionThread
- * post방식으로 넘길 경우
+ *
+ * Setting the request method to POST.
  */
 
 public class HttpConnectionThread extends AsyncTask<String, Void, String> {
@@ -27,7 +28,6 @@ public class HttpConnectionThread extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... path){
-        // URL 연결이 구현될 부분
         URL url;
         String response = "";
         String CONNURL = path[0];
@@ -40,7 +40,7 @@ public class HttpConnectionThread extends AsyncTask<String, Void, String> {
             Log.e(LOG_TAG, VALUE);
 
             conn = (HttpURLConnection) url.openConnection();
-            conn.setConnectTimeout(3000); // 타임아웃
+            conn.setConnectTimeout(3000);
             conn.setRequestMethod("POST");
 //            conn.setRequestProperty("Cache-Control", "no-cache");
 //            conn.setRequestProperty("Accept", "application/json");
@@ -49,18 +49,18 @@ public class HttpConnectionThread extends AsyncTask<String, Void, String> {
             conn.setDoInput(true);
             conn.setDoOutput(true);
 
-            OutputStream os = conn.getOutputStream(); // 서버로 보내기 위한 출력 스트림
+            OutputStream os = conn.getOutputStream();                               // Output Stream to send to server
             os.write(VALUE.getBytes());
             os.flush();
             os.close();         /**  <<<< 위치 */
 
             Log.e("http response code", conn.getResponseCode()+"");
-            if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) { // 연결에 성공한 경우
-                Log.e(LOG_TAG, "연결 성공");
+            if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {              // Connection success
+                Log.e(LOG_TAG, "Connection Success");
                 String line;
-                BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream())); // 서버의 응답을 읽기 위한 입력 스트림
+                BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));   // Input stream to receive response for server.
 
-                while ((line = br.readLine()) != null) {// 서버의 응답을 읽어옴
+                while ((line = br.readLine()) != null) {
                     response += line;
                 }
 
@@ -82,12 +82,12 @@ public class HttpConnectionThread extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        // UI 업데이트가 구현될 부분
+        // In this method, implement UI update.
 
         if( result.equals("failed")){
-            Log.e("연결","실패");
+            Log.e("connection","failed");
         }else if( !result.equals("{}")) {
-            Log.e("!{}","진입");
+            Log.e("!{}","success");
         }
 
 
