@@ -2,7 +2,10 @@ package com.estsoft.mblockchain.kow.fragments;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -20,6 +23,10 @@ import com.estsoft.mblockchain.kow.R;
 import com.estsoft.mblockchain.kow.adapters.GoogleLoginAdapter;
 import com.estsoft.mblockchain.kow.adapters.PreferencesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 
 /**
@@ -49,8 +56,11 @@ public class MyPageFragment extends Fragment {
 
 
         // Setup list
+
+
         backgroundImg = (ImageView) rootView.findViewById(R.id.header_cover_image);
         profileView = (ImageView) rootView.findViewById(R.id.user_profile_photo);
+        signLoad();
         Button signOutButton = (Button) rootView.findViewById(R.id.sign_out_button);
         signOutButton.setOnClickListener( v -> {
 
@@ -68,7 +78,27 @@ public class MyPageFragment extends Fragment {
         nameView.setText(acct);
 
 
+
+
         return rootView;
+
+    }
+
+
+    public void signLoad() {
+
+        String StoragePath = Environment.getExternalStorageDirectory().getAbsolutePath();
+
+        String savePath = StoragePath + "/mbc";
+
+        File imgFile = new File(savePath+"/my_sign.png");
+
+        if(imgFile.exists()) {
+            Bitmap bitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+            profileView.setImageBitmap(bitmap);
+        }
+
+
 
     }
 
