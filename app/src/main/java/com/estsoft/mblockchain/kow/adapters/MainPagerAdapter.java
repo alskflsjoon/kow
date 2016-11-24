@@ -20,7 +20,9 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
 	public static final int FAVORITES_POS = 2;
 	public static final int MYPAGE_POS = 3;
 
+
 	private Context context;
+
 
 	public MainPagerAdapter(Context context, FragmentManager fm) {
 		super(fm);

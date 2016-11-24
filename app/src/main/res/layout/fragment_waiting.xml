@@ -5,13 +5,97 @@
     android:layout_height="match_parent"
     >
 
-
-
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Waiting Fragment"/>
+        android:text="Waiting Fragment : FCM 및 주소록동기화 테스트 프래그먼트"/>
+
+    <Button
+        android:text="토큰 목록 가져오기"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="33dp"
+        android:id="@+id/BringTokenList" />
+
+    <Button
+        android:text="진동끄기"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/PushByTopic"
+        android:layout_marginTop="14dp"
+        android:id="@+id/vibOFF" />
+
+    <TextView
+        android:text="이곳에 저장된 토큰이 나타납니다."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TokenList"
+        android:layout_below="@+id/BringTokenList"
+        android:layout_alignLeft="@+id/BringTokenList"
+        android:layout_alignStart="@+id/BringTokenList" />
+
+    <Button
+        android:text="토픽으로 FCM 푸시하기"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/PushByTopic"
+        android:layout_marginTop="32dp"
+        android:layout_below="@+id/TokenList"
+        android:layout_alignLeft="@+id/vibOFF"
+        android:layout_alignStart="@+id/vibOFF" />
+
+    <Button
+        android:text="진동켜기"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/vibON"
+        android:layout_alignBaseline="@+id/vibOFF"
+        android:layout_alignBottom="@+id/vibOFF"
+        android:layout_toRightOf="@+id/vibOFF"
+        android:layout_toEndOf="@+id/vibOFF" />
+
+    <Button
+        android:text="토큰으로 FCM 푸시하기"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/PushByToken"
+        android:layout_alignBaseline="@+id/PushByTopic"
+        android:layout_alignBottom="@+id/PushByTopic"
+        android:layout_toRightOf="@+id/vibON"
+        android:layout_toEndOf="@+id/vibON" />
+
+    <Button
+        android:text="내 번호 가져오기"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bringMyPhoneNumber"
+        android:layout_above="@+id/bringAddressBook"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="99dp" />
+
+    <TextView
+        android:text="내번호가 나온다"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bringAddressBook"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="53dp"
+        android:id="@+id/myPhoneNumber" />
+
+    <Button
+        android:text="주소록 가져오기"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bringAddressBook"
+        android:textSize="14sp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="88dp" />
 
 </RelativeLayout>

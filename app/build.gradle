@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
 //for use lambda
 apply plugin: 'me.tatarka.retrolambda'
-//for use google api
-apply plugin: 'com.google.gms.google-services'
+
+
 
 android {
     compileSdkVersion 24
     buildToolsVersion "25.0.0"
     defaultConfig {
         applicationId "com.estsoft.mblockchain.kow"
-        minSdkVersion 15
+        minSdkVersion 23
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
@@ -49,7 +49,19 @@ dependencies {
     compile 'com.oguzdev:CircularFloatingActionMenu:1.0.2'
 
     // Dependency for Google Sign-In
-    compile 'com.google.android.gms:play-services-auth:9.0.0'
+    compile 'com.google.android.gms:play-services-auth:9.6.1'
+
+    // Added code for FCM Push
+    // (modified) firebase-messaging:9.6.1 to firebase-messaging:9.0.0'
+
+
+    compile 'com.google.firebase:firebase-messaging:9.6.1'
+
+    // Added code for when you send data to server if you use okhttp
+    compile 'com.squareup.okhttp3:okhttp:3.2.0'
 
     testCompile 'junit:junit:4.12'
 }
+
+//for use google api : Google-Login, FCM
+apply plugin: 'com.google.gms.google-services'

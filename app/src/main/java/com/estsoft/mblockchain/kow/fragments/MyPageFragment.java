@@ -1,19 +1,33 @@
 package com.estsoft.mblockchain.kow.fragments;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.estsoft.mblockchain.kow.LoginActivity;
+import com.estsoft.mblockchain.kow.MainActivity;
 import com.estsoft.mblockchain.kow.R;
+import com.estsoft.mblockchain.kow.adapters.GoogleLoginAdapter;
 import com.estsoft.mblockchain.kow.adapters.PreferencesUtil;
+import com.google.android.gms.common.api.GoogleApiClient;
 
-import static android.content.Context.MODE_PRIVATE;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 
 /**
  * Created by joeylee on 2016-11-16.
@@ -21,8 +35,10 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class MyPageFragment extends Fragment {
 
-    ImageView backgroundImg;    // 커버사진
-    ImageView profileView;  // 프로필 사진
+    ImageView backgroundImg;    // cover image
+    ImageView profileView;  // profile image
+
+    GoogleLoginAdapter loginAdapter;
 
     public static MyPageFragment newInstance() { return new MyPageFragment(); }
 
@@ -35,18 +51,57 @@ public class MyPageFragment extends Fragment {
 
         String acct = PreferencesUtil.getPreferences(getContext(),"acct");
 
+        loginAdapter = new GoogleLoginAdapter(getActivity(), getContext());
+        loginAdapter.init();
+
 
         // Setup list
+
+
         backgroundImg = (ImageView) rootView.findViewById(R.id.header_cover_image);
         profileView = (ImageView) rootView.findViewById(R.id.user_profile_photo);
+        signLoad();
+        Button signOutButton = (Button) rootView.findViewById(R.id.sign_out_button);
+        signOutButton.setOnClickListener( v -> {
+
+//            Toast.makeText(getContext(),"sign out",Toast.LENGTH_LONG).show();
+            loginAdapter.signOut();
+            Intent i = new Intent(getContext(), LoginActivity.class);
+            startActivity(i);
+            getActivity().finish();
+
+
+        });
         TextView nameView = (TextView) rootView.findViewById(R.id.prof_name);
         TextView profMessage = (TextView)rootView.findViewById(R.id.prof_message);
 
         nameView.setText(acct);
 
 
+
+
         return rootView;
 
     }
+
+
+    public void signLoad() {
+
+        String StoragePath = Environment.getExternalStorageDirectory().getAbsolutePath();
+
+        String savePath = StoragePath + "/mbc";
+
+        File imgFile = new File(savePath+"/my_sign.png");
+
+        if(imgFile.exists()) {
+            Bitmap bitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+            profileView.setImageBitmap(bitmap);
+        }
+
+
+
+    }
+
+
 }
 
