@@ -17,8 +17,7 @@ public class FCMTestActivity extends AppCompatActivity {
         BackToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(FCMTestActivity.this, MainActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
     }

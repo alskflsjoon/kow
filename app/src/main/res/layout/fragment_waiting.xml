@@ -70,4 +70,32 @@
         android:layout_toRightOf="@+id/vibON"
         android:layout_toEndOf="@+id/vibON" />
 
+    <Button
+        android:text="내 번호 가져오기"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bringMyPhoneNumber"
+        android:layout_above="@+id/bringAddressBook"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="99dp" />
+
+    <TextView
+        android:text="내번호가 나온다"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bringAddressBook"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="53dp"
+        android:id="@+id/myPhoneNumber" />
+
+    <Button
+        android:text="주소록 가져오기"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bringAddressBook"
+        android:textSize="14sp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="88dp" />
+
 </RelativeLayout>
