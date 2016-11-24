@@ -47,7 +47,7 @@ public class InputTextActivity extends AppCompatActivity {
             generateTextFile(input);
 
             new HttpConnectionThread(getApplicationContext()).execute(schInsertURL,  generateConnData(input));
-            finish();       // Back to MainActivity
+            finish();            // Back to MainActivity
         });
 
 
