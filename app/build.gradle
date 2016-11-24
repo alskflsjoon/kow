@@ -6,10 +6,10 @@ apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "24.0.2"
+    buildToolsVersion "25.0.0"
     defaultConfig {
         applicationId "com.estsoft.mblockchain.kow"
-        minSdkVersion 18
+        minSdkVersion 23
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"

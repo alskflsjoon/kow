@@ -4,12 +4,14 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
 import com.estsoft.mblockchain.kow.MainActivity;
 import com.estsoft.mblockchain.kow.R;
+import com.estsoft.mblockchain.kow.SignActivity;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -129,7 +131,9 @@ public class GoogleLoginAdapter implements GoogleApiClient.OnConnectionFailedLis
         if (result.isSuccess()) {
             // Signed in successfully
             GoogleSignInAccount acct = result.getSignInAccount();
-            Intent i = new Intent(mContext,MainActivity.class);
+
+
+            Intent i = new Intent(mContext,SignActivity.class);
 
             PreferencesUtil.setPreferences(mContext,"acct",acct.getDisplayName());
 
