@@ -37,10 +37,12 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import okhttp3.Call;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
+import okhttp3.Response;
 
 /**
  * Created by joeylee on 2016-11-16.
@@ -405,6 +407,11 @@ public class WaitingFragment extends Fragment {
                         .build();
                 try {
                     client.newCall(request).execute();
+
+                    // response body 의 leak를 막기위한 처리 : okhttp 사용한 코드에 전부 추가할 것.
+                    Call call = client.newCall(request);
+                    Response response = call.execute();
+                    response.body().close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
